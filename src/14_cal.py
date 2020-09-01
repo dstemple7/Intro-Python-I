@@ -26,7 +26,22 @@ This would mean that from the command line you would call `python3 14_cal.py 4 2
 print out a calendar for April in 2015, but if you omit either the year or both values, 
 it should use today’s date to get the month and year.
 """
+# use the sys args like earlier
+# for args in sys.argv, parse & first index [0] is file name, index [1] can be set after space, index [2] after another space for month & year
 
 import sys
 import calendar
 from datetime import datetime
+today = datetime.now()
+
+if len(sys.argv) == 1:
+  print(calendar.month(today.year, today.month))
+
+elif len(sys.argv) == 2:
+  print(calendar.month(today.year, int(sys.argv[1])))
+
+elif len(sys.argv) == 3:
+  print(calendar.month(int(sys.argv[2]), int(sys.argv[1])))
+
+else:
+  print("Format your CLI as [filename] [MM] [YYYY]")
